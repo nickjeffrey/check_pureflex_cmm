@@ -1,5 +1,5 @@
 # check_pureflex_cmm
-nagios check for IBM Pureflex chassis health
+nagios check for IBM / Lenovo Pureflex chassis health
 
 This script will monitor the status of the Pureflex Chassis Management Module (CMM) over SNMP.
 
@@ -13,17 +13,17 @@ define service{
         use                             generic-24x7-service
         host_name                       cmm1
         service_description             Chassis health
-        check_command                   check_cmm!public
+        check_command                   check_pureflex_cmm!public
         }
 ```
 
 Add the following section to commands.cfg on the nagios server
 ```
 # ---------------------------------------------------------------------------
-# 'check_cmm' command definition
+# 'check_pureflex_cmm' command definition
 define command{
-        command_name    check_cmm
-        command_line    $USER1$/check_cmm -H $HOSTADDRESS$ -c $ARG1$
+        command_name    check_pureflex_cmm
+        command_line    $USER1$/check_pureflex_cmm -H $HOSTADDRESS$ -c $ARG1$
         }
 ```
 
